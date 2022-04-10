@@ -1,0 +1,39 @@
+version: '3'
+services:
+  repl1:
+    container_name: "repl1"
+    image: percona/percona-server:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 00#Abc#123
+    ports:
+      - "3316:3306"
+    volumes:
+      # create volumes for use
+      - ./repl1/data:/var/lib/mysql
+      # bind mount my local my.cnf
+      - ./repl1/my.cnf:/etc/my.cnf
+      - ./repl1/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      - mysql
+  repl2:
+    container_name: "repl2"
+    image: percona/percona-server:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 00#Abc#123
+    ports:
+      - "3317:3306"
+    volumes:
+      # create volumes for use
+      - ./repl2/data:/var/lib/mysql
+      # bind mount my local my.cnf
+      - ./repl2/my.cnf:/etc/my.cnf
+      - ./repl2/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      - mysql
+    depends_on:
+      - repl1
+networks:
+  mysql:
+    name: mysql
