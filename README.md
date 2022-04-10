@@ -9,7 +9,8 @@
 git clone https://github.com/zhoujunhe/mysql-repl.git
 ```
 
-# 安装命令启动命令
+# 安装启动命令
+程序运行install.sh安装后自动启动
 ```
 cd mysql-repl
 chmod a+x install.sh
