@@ -6,7 +6,7 @@
 安装好docker,docker-compose,git <br>
 下载程序
 ```
-git clone https://github.com/zhoujunhe/mysql-redis.git
+git clone https://github.com/zhoujunhe/mysql-repl.git
 ```
 
 # 安装命令启动命令
