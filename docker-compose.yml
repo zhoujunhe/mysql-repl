@@ -34,6 +34,17 @@ services:
       - mysql
     depends_on:
       - repl1
+  orch:
+    container_name: "orch"
+    image: openarkcode/orchestrator
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      # create volumes for use
+      - ./orchestrator.conf.json:/etc/orchestrator.conf.json
+    networks:
+      - mysql
 networks:
   mysql:
     name: mysql
