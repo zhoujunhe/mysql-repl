@@ -4,6 +4,8 @@ services:
     container_name: "repl1"
     image: percona/percona-server:8.0
     restart: always
+    security_opt:
+      - seccomp:unconfined    
     environment:
       MYSQL_ROOT_PASSWORD: 00#Abc#123
       TZ: "Asia/Shanghai"
